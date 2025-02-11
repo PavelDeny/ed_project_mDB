@@ -1,6 +1,5 @@
 /* Задания на урок:
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
 2) Изменить жанр фильма, поменять "комедия" на "драма"
 
@@ -26,6 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const adv = document.querySelectorAll(".promo__adv img");
+  const poster = document.querySelector(".promo__bg");
+  const genre = document.querySelector(".promo__genre");
+
+  function makeChanges() {
+    poster.style.background = "url(img/bg.jpg)";
+    genre.textContent = "драма";
+  }
 
   function deleteAdv(arr) {
     arr.forEach((item) => {
@@ -34,4 +40,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   deleteAdv(adv);
+  makeChanges();
 });
