@@ -1,10 +1,3 @@
-/* Задания на урок:
-
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
-
-5) Добавить нумерацию выведенных фильмов */
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,6 +16,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const genre = document.querySelector(".promo__genre");
 
   const movieList = document.querySelector(".promo__interactive-list");
+
+  const addForm = document.querySelector("form.add");
+  const addInput = addForm.querySelector(".adding__input");
+  const checkbox = addForm.querySelector('[type="checkbox"]');
+
+  addForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let newFilm = addInput.value;
+    let favorite = checkbox.checked;
+
+    if (newFilm) {
+      if (newFilm > 21) {
+        newFilm = `${newFilm.substring(0, 22)}...`;
+      }
+
+      if (favorite) {
+        console.log("Добавляем любимый фильм");
+      }
+
+      movieDB.movies.push(newFilm);
+      sortArr(movieDB.movies);
+      createMovieList(movieDB.movies, movieList);
+    }
+  });
 
   function makeChanges() {
     poster.style.background = "url(img/bg.jpg)";
@@ -50,6 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
       </li>
       
       `;
+    });
+
+    document.querySelectorAll(".delete").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        btn.parentElement.remove();
+        movieDB.movies.splice(i, 1);
+        createMovieList(films, parent);
+      });
     });
   }
 
