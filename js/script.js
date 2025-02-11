@@ -1,11 +1,5 @@
 /* Задания на урок:
 
-
-2) Изменить жанр фильма, поменять "комедия" на "драма"
-
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
-
 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
 Отсортировать их по алфавиту 
 
@@ -28,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const poster = document.querySelector(".promo__bg");
   const genre = document.querySelector(".promo__genre");
 
+  const movieList = document.querySelector(".promo__interactive-list");
+
   function makeChanges() {
     poster.style.background = "url(img/bg.jpg)";
     genre.textContent = "драма";
@@ -38,6 +34,26 @@ document.addEventListener("DOMContentLoaded", () => {
       item.remove();
     });
   }
+
+  const sortArr = function (arr) {
+    arr.sort();
+  };
+
+  function createMovieList(films, parent) {
+    parent.innerHTML = "";
+    sortArr(films);
+
+    films.forEach((film, i) => {
+      parent.innerHTML += `
+      <li class="promo__interactive-item">${i + 1} ${film}
+                            <div class="delete"></div>
+      </li>
+      
+      `;
+    });
+  }
+
+  createMovieList(movieDB.movies, movieList);
 
   deleteAdv(adv);
   makeChanges();
