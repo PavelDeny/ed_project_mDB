@@ -24,4 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "Скотт Пилигрим против...",
     ],
   };
+
+  const adv = document.querySelectorAll(".promo__adv img");
+
+  function deleteAdv(arr) {
+    arr.forEach((item) => {
+      item.remove();
+    });
+  }
+
+  deleteAdv(adv);
 });
