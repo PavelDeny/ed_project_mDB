@@ -12,20 +12,16 @@
 
 5) Добавить нумерацию выведенных фильмов */
 
-'use strict';
+"use strict";
 
-document.addEventListener('DOMContentLoaded' => {
-
-   const movieDB = {
-      movies: [
-          "Логан",
-          "Лига справедливости",
-          "Ла-ла лэнд",
-          "Одержимость",
-          "Скотт Пилигрим против..."
-      ]
-  }
-
+document.addEventListener("DOMContentLoaded", () => {
+  const movieDB = {
+    movies: [
+      "Логан",
+      "Лига справедливости",
+      "Ла-ла лэнд",
+      "Одержимость",
+      "Скотт Пилигрим против...",
+    ],
+  };
 });
-
-
